@@ -1,0 +1,9 @@
+# Bars in the source data that are clearly wrong. Each one is treated as "no trade that day"
+# (close carried forward, excluded from liquidity and volatility windows).
+date,ticker,reason
+2020-09-23,ELGIEQUIP,last trade 1.91 vs ~62 the day before and ~124 the day after
+2021-02-01,KNRCON,whole bar at roughly half the surrounding prices; reverts next day
+2023-09-21,COCHINSHIP,bar at roughly double the surrounding prices; reverts next day
+2023-09-21,HAL,close at ~2x the surrounding prices; next day back to normal (same bad file day as COCHINSHIP)
+2023-09-21,SONATSOFTW,close at ~2x the surrounding prices; next day back to normal (same bad file day as COCHINSHIP)
+2023-09-29,PERSISTENT,close at ~0.5x the surrounding prices; next day back to normal

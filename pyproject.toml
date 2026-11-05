@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idxf"
+version = "1.0.0"
+description = "Rules-based equity index calculation, maintenance and structured-note pricing on NSE data"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scipy>=1.11",
+    "pyarrow>=14",
+    "pyyaml>=6",
+    "matplotlib>=3.8",
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+app = ["streamlit>=1.36", "altair>=5"]
+
+[project.scripts]
+idxf = "idxf.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,100 @@
+# Corporate actions applied by the engine. factor = new shares per old share.
+# Built from `idxf detect-ca` (data/ca_candidates.csv) and checked by hand; the decision for
+# every candidate, including the ones with no action, is in data/ca_review_log.csv.
+#
+# split / bonus     : announced ratio
+# demerger          : P(cum) / pre-open discovered price on the ex-date (methodology 9.2)
+# merger            : exchange ratio for a security conversion
+# special_dividend  : amount in INR per share, factor 1
+# data_fix          : level shift in the source data with no economic event behind it.
+#                     Applied exactly like a split so the index market value is continuous.
+ex_date,ticker,action,factor,amount,source,note
+2018-06-27,NIACL,bonus,2,,scan,1:1 bonus
+2018-09-06,ADANIENT,demerger,1.4079,,scan,Adani Gas demerged
+2018-10-30,CESC,demerger,1.2852,,scan,CESC Ventures and Spencer's Retail demerged
+2019-01-24,BSOFT,demerger,1.6317,,scan,KPIT engineering business demerged; listed entity renamed Birlasoft
+2019-03-22,PERSISTENT,data_fix,2,,scan,source switches to a half-scaled series; no corporate action on this date
+2020-03-04,TATACHEM,demerger,2.2994,,scan,consumer products business moved to Tata Consumer Products
+2020-09-24,ELGIEQUIP,data_fix,0.5,,scan,price level doubles with no corporate action; source history before this date is scaled by 0.5
+2020-09-25,COHANCE,data_fix,2,,scan,level halves with unchanged volume (ratio 1.05) - points to a source adjustment not a split
+2021-03-30,PERSISTENT,data_fix,0.5,,scan,source switches back to unscaled series
+2022-01-14,MOTHERSON,demerger,1.2262,,scan,wiring harness business demerged (now MSUMI)
+2022-02-08,SCHAEFFLER,split,5,,scan,face value 10 -> 2
+2022-08-30,PEL,demerger,1.8892,,scan,Piramal Pharma demerged
+2022-10-27,NMDC,demerger,1.4289,,scan,NMDC Steel demerged
+2023-03-31,SCI,demerger,1.3207,,scan,SCI Land & Assets demerged
+2023-07-14,PERSISTENT,data_fix,2,,scan,source scaling flip
+2023-08-28,PERSISTENT,data_fix,2,,scan,source scaling flip
+2023-09-01,PERSISTENT,data_fix,0.5,,scan,source scaling flip
+2024-03-05,CGCL,bonus,2,,scan,1:1 bonus; open gap 1.88 on a weak day but 5-day persistence 0.51 and volume x2 confirm 2.0
+2024-04-23,ASTERDM,special_dividend,1,118,manual,INR 118 special dividend after the sale of the GCC business
+2024-06-13,SANOFI,demerger,1.6054,,scan,consumer healthcare business demerged
+2024-07-11,RAYMOND,demerger,1.6650,,scan,Raymond Lifestyle demerged
+2024-09-09,HEG,split,5,,scan,face value 10 -> 2
+2024-10-10,IDFCFIRSTB,merger,1.55,,manual,source history before this date is IDFC Ltd; holders received 155 IDFC First Bank shares per 100 IDFC shares
+2024-10-28,DRREDDY,split,5,,scan,face value 5 -> 1
+2024-10-28,RELIANCE,bonus,2,,scan,1:1 bonus
+2024-11-27,EASEMYTRIP,bonus,2,,scan,2x share event; ratio from price persistence (0.52) and volume (x1.9)
+2024-12-02,WIPRO,bonus,2,,scan,1:1 bonus
+2024-12-23,NMDC,bonus,3,,scan,2:1 bonus
+2024-12-27,MAZDOCK,split,2,,scan,face value 10 -> 5
+2025-01-06,SHRIRAMFIN,split,5,,scan,face value 10 -> 2
+2025-01-31,IGL,bonus,2,,scan,1:1 bonus
+2025-01-31,JBMA,split,2,,scan,face value 2 -> 1
+2025-02-28,ANANDRATHI,bonus,2,,scan,1:1 bonus
+2025-04-07,SIEMENS,demerger,1.9431,,scan,energy business demerged (Siemens Energy India). Open-based; the close-based 1.70 includes a -12% move on the 7 Apr 2025 sell-off
+2025-04-15,QUESS,demerger,2.1735,,scan,Digitide and Bluspring demerged
+2025-05-05,NAUKRI,split,5,,scan,face value 10 -> 2
+2025-05-14,RAYMOND,demerger,2.9673,,scan,Raymond Realty demerged (gap is close to 3 by coincidence - not a bonus)
+2025-05-19,BSE,bonus,3,,scan,2:1 bonus
+2025-05-22,ABFRL,demerger,2.7455,,scan,Aditya Birla Lifestyle Brands demerged
+2025-06-02,COFORGE,split,5,,scan,face value 10 -> 2
+2025-06-16,BAJFINANCE,split,10,,scan,4:1 bonus and 1:2 split on the same ex-date (5 x 2)
+2025-06-30,CONCOR,bonus,1.25,,scan,1:4 bonus
+2025-07-14,ASHOKLEY,bonus,2,,scan,1:1 bonus
+2025-07-14,MOTHERSON,bonus,1.5,,scan,1:2 bonus
+2025-07-14,MSUMI,bonus,1.5,,scan,1:2 bonus
+2025-08-04,NESTLEIND,bonus,2,,scan,1:1 bonus
+2025-08-25,HDFCBANK,bonus,2,,scan,1:1 bonus
+2025-09-08,PATANJALI,bonus,3,,scan,2:1 bonus
+2025-09-15,GODFRYPHLP,bonus,3,,scan,2:1 bonus
+2025-09-22,ADANIPOWER,split,5,,scan,face value 10 -> 2. Close-based ratio 4.1 is wrong because the stock rallied ~20% on the day
+2025-09-22,PIDILITIND,bonus,2,,scan,1:1 bonus
+2025-10-13,SKFINDIA,demerger,2.0913,,scan,industrial business demerged
+2025-10-13,TATAINVEST,split,10,,scan,face value 10 -> 1
+2025-10-13,TMPV,demerger,1.6477,,scan,commercial vehicle business demerged (TMCV); traded as TATAMOTORS until the symbol change
+2025-11-03,BEML,split,2,,scan,face value 10 -> 5
+2025-11-24,HDFCAMC,bonus,2,,scan,1:1 bonus
+2025-12-01,CAMS,split,5,,scan,face value 10 -> 2
+2025-12-15,LALPATHLAB,bonus,2,,scan,1:1 bonus
+2025-12-22,NUVAMA,split,5,,scan,face value 10 -> 2
+2026-01-01,AIIL,data_fix,3,,boundary,2026 file: closes pre-scaled by 3.0 for the Jan-2026 split (raw opens show the 3.0 basis)
+2026-01-01,ANANDRATHI,data_fix,1.5,,boundary,2026 file: closes pre-scaled by 1.5 for the Jun-2026 bonus
+2026-01-01,ANGELONE,data_fix,5.5176,,boundary,2026 file: closes pre-scaled by 5.52 for the Feb-2026 split
+2026-01-01,BRIGADE,data_fix,1.164,,boundary,2026 file: closes pre-scaled by 1.164 for the Jun-2026 bonus
+2026-01-01,CUB,data_fix,1.1639,,boundary,2026 file: closes pre-scaled by 1.164 for the Jun-2026 bonus
+2026-01-01,ECLERX,data_fix,1.5,,boundary,2026 file: closes pre-scaled by 1.5 for the Mar-2026 bonus
+2026-01-01,IRB,data_fix,1.5,,boundary,2026 file: closes pre-scaled by 1.5 for the Mar-2026 bonus
+2026-01-01,KOTAKBANK,data_fix,3,,boundary,2026 file: closes pre-scaled by 3.0 for the Jan-2026 split
+2026-01-01,LICI,data_fix,1.5,,boundary,2026 file: closes pre-scaled by 1.5 for the May-2026 bonus
+2026-01-01,MCX,split,5,,scan,real 1:5 split with ex-date on the first day of the 2026 file (open moved too - not a vendor rescale)
+2026-01-01,METROPOLIS,data_fix,2.5,,boundary,2026 file: closes pre-scaled by 2.5 for the Mar-2026 share event
+2026-01-01,TRENT,data_fix,1.25,,boundary,2026 file: closes pre-scaled by 1.25 for the Jun-2026 bonus
+2026-01-01,TRIVENI,data_fix,1.2397,,boundary,2026 file: closes pre-scaled by 1.24 for the Jul-2026 event
+2026-01-01,VEDL,data_fix,1.4622,,boundary,2026 file: closes pre-scaled by 1.46 for the Apr-2026 demerger
+2026-01-01,ZFCVINDIA,data_fix,3.5014,,boundary,2026 file: closes pre-scaled by 3.50 for the Jun-2026 share event
+2026-01-12,AIIL,split,1.6667,,scan,1:5 split; 3.0 already in the 2026 closes so the remaining step is 5/3
+2026-01-12,KOTAKBANK,split,1.6667,,scan,1:5 split; 3.0 already in the 2026 closes so the remaining step is 5/3
+2026-02-23,ANGELONE,split,1.8124,,scan,1:10 split; 5.52 already in the 2026 closes so the remaining step is 10/5.52
+2026-03-09,ECLERX,bonus,1.3333,,scan,1:1 bonus; 1.5 already in the 2026 closes so the remaining step is 2/1.5
+2026-03-16,METROPOLIS,split,1.6,,scan,4x share event; 2.5 already in the 2026 closes so the remaining step is 4/2.5
+2026-03-30,IRB,bonus,1.3333,,scan,1:1 bonus; remaining step 2/1.5
+2026-04-20,VEDL,demerger,1.8472,,scan,demerger; total factor 2.70 from raw-basis opens; 1.46 already in the 2026 closes
+2026-05-25,LICI,bonus,1.3333,,scan,1:1 bonus; remaining step 2/1.5
+2026-06-01,ANANDRATHI,bonus,1.3333,,scan,1:1 bonus; remaining step 2/1.5
+2026-06-01,TRENT,bonus,1.2,,scan,1:2 bonus (total 1.5 from raw-basis opens); remaining step 1.5/1.25
+2026-06-08,BRIGADE,bonus,1.1455,,scan,1:3 bonus (total 4/3); remaining step (4/3)/1.164
+2026-06-08,CUB,bonus,1.1456,,scan,1:3 bonus (total 4/3); remaining step (4/3)/1.1639
+2026-06-22,ZFCVINDIA,split,1.7136,,scan,6x share event; remaining step 6/3.50
+2026-07-20,TRIVENI,demerger,1.3061,,scan,demerger; total factor 1.62 from raw-basis opens; 1.24 already in the 2026 closes
+2026-09-24,POLICYBZR,bonus,1.5,,scan,1:2 bonus: gap 1.53 with persistence 0.66 and volume x5

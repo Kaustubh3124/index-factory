@@ -1,0 +1,7 @@
+# old,new,effective  -- effective = first trading day the new symbol is used for the index
+# Tata Motors: after the CV demerger (ex-date 2025-10-13) the listed passenger-vehicle company
+# trades as TMPV. Source data has TATAMOTORS until 2025-10-17 and a TMPV file that also covers
+# Jul-Oct 2025 on a demerger-adjusted basis, so we splice on the first day TATAMOTORS is missing.
+old,new,effective
+TATAMOTORS,TMPV,2025-10-20
+LTIM,LTM,2026-01-01

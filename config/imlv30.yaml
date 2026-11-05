@@ -1,0 +1,63 @@
+# India Momentum Low-Vol 30 (IMLV30)
+# All parameters the rulebook refers to live here. Changing anything in this
+# file changes the index, so treat edits like a methodology change and note
+# them in docs/methodology.md (section 9, change log).
+
+name: India Momentum Low-Vol 30
+ticker: IMLV30
+base_date: 2019-06-28
+base_value: 1000.0
+currency: INR
+
+universe:
+  min_history_days: 260          # trading days of history on determination date (>= mom_long + skip margin)
+  liquidity_window: 126          # ~6 months
+  min_median_value_cr: 25.0      # median daily traded value, INR crore
+  min_trading_ratio: 0.95        # share of exchange days the stock actually traded
+  top_n_by_liquidity: 150        # size proxy, see methodology 3.3
+  min_price: 20.0
+  exclude: []                    # manual exclusions (e.g. ETFs, index tickers)
+
+scores:
+  mom_long: 252                  # 12m window
+  mom_short: 126                 # 6m window
+  mom_skip: 21                   # skip most recent month (short-term reversal)
+  vol_window: 252
+  mom_weight: 0.5
+  lowvol_weight: 0.5
+  winsor: 3.0
+
+selection:
+  n_constituents: 30
+  buffer_in: 20                  # new names enter automatically if ranked <= 20
+  buffer_out: 40                 # incumbents survive if ranked <= 40
+
+weighting:
+  scheme: inverse_vol
+  vol_window: 126
+  stock_cap: 0.08
+  stock_floor: 0.01
+  sector_cap: 0.30
+
+schedule:
+  months: [3, 6, 9, 12]          # rebalance months
+  determination_lag: 10          # trading days before effective date
+  announcement_lag: 5            # trading days before effective date
+
+costs:
+  half_spread_bps: 5.0
+  impact_coef: 0.10              # sqrt-impact coefficient on daily vol
+  tracking_aum_cr: 2000.0        # notional AUM assumed for flow / capacity numbers
+  max_participation: 0.20
+
+data_quality:
+  max_unexplained_move: 0.35     # |daily return| above this without a CA gets flagged
+  stale_days: 5                  # consecutive no-trade days before we treat a stock as suspended
+
+pricing:
+  rate: 0.0675                   # flat INR rate, continuous comp. (approx 3y G-sec)
+  div_yield: 0.012               # price-return index -> holders do not get dividends
+  note_tenor_years: 3.0
+  note_fees: 0.015               # issuer margin + distribution, upfront
+  mc_paths: 200000
+  seed: 7

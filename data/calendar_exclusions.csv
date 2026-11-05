@@ -1,0 +1,7 @@
+# Dates present in the source data that are not real trading sessions. Removed before the
+# calendar is built. Real weekend sessions (Budget days 2020-02-01 and 2025-02-01, the 2024 DR
+# site live sessions on 20 Jan / 2 Mar / 18 May, and the Diwali Muhurat sessions) are kept.
+date,reason
+2025-03-08,only the index file has bars (28 one-minute bars) - not a session
+2025-11-08,Saturday mock trading session leaked into the data: NIFTY 50 prints -10% and ~100 stocks gap 20% then revert on Monday
+2026-05-16,Saturday with a single one-minute bar in the index file - not a session
